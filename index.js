@@ -2,6 +2,7 @@ const express = require("express");
 const { exec } = require("child_process");
 const app = express();
 const port = 3000;
+const served = 0;
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -23,17 +24,7 @@ app.get("/", (req, res) => {
 
 app.get("/stream/output/channel/:channel/:filename", (req, res) => {
   const { channel, filename } = req.params;
-  exec("./cleanup.sh", (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-  });
+  console.log(channel, filename)
   res.sendFile(`/output/channel${channel}/${filename}`, { root: __dirname });
 });
 
@@ -45,3 +36,19 @@ app.get("/stream/:channel", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+
+// const cleanUp = () => {
+//   exec("./cleanup.sh", (error, stdout, stderr) => {
+//     if (error) {
+//       console.log(`error: ${error.message}`);
+//       return;
+//     }
+//     if (stderr) {
+//       console.log(`stderr: ${stderr}`);
+//       return;
+//     }
+//     console.log(`stdout: ${stdout}`);
+//   });
+// }
+// setInterval(cleanUp, 10000);

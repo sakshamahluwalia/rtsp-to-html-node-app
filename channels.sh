@@ -10,7 +10,7 @@ done
 
 cd ..
 
-pwd 
+pwd
 ls
 
 ffmpeg -fflags nobuffer \
@@ -107,4 +107,3 @@ ffmpeg -fflags nobuffer \
 #  -segment_list_type m3u8 \
 #  -segment_list_entry_prefix output/channel6/ \
 #  output/channel6/%3d.ts
-
