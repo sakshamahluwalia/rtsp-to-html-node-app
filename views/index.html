@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Cam</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<body>
+  <video style="height: 500px; width: 500px" id="video1" autoplay="true" muted playsinline controls="controls" type='application/x-mpegURL'></video>
+  <!-- <video style="height: 500px; width: 500px" id="video2" autoplay="true" muted playsinline controls="controls" type='application/x-mpegURL'></video>
+  <video style="height: 500px; width: 500px" id="video3" autoplay="true" muted playsinline controls="controls" type='application/x-mpegURL'></video> -->
+  <script>
+    const initVideo = (channelNumber) => {
+      var video = document.getElementById(`video${channelNumber}`);
+      var hls = new Hls();
+      // bind them together
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+        console.log(
+          `video and hls.js are now bound together for ${channelNumber} !`
+        );
+        hls.loadSource(`http://192.168.68.120:3000/stream/${channelNumber}`);
+        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {});
+      });
+    };
+    if (Hls.isSupported()) {
+      initVideo(1);
+      // initVideo(2);
+    }
+  </script>
+</body>
+</html>
