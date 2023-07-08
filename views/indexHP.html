@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Cam</title>
+  <link rel="stylesheet" href="indexHP.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<body>
+  <div class="mainContainer marginTop10 justifyContentSpaceEvenly">
+    <div class="focused">
+      <video id="video1" autoplay="true" muted playsinline controls="controls" type='application/x-mpegURL'></video>
+    </div>
+    <div class="container column justifyContentSpaceBetween">
+      <video class="height225" id="video2" autoplay="true" muted playsinline controls="controls" type='application/x-mpegURL'></video>
+      <video class="height225" id="video3" autoplay="true" muted playsinline controls="controls" type='application/x-mpegURL'></video>
+    </div>
+  </div>
+  <div class="container marginTop25 justifyContentSpaceEvenly">
+    <video class="marginLeft10 height250" id="video4" autoplay="true" muted playsinline controls="controls" type='application/x-mpegURL'></video>
+    <video class="marginLeft10 height250" id="video5" autoplay="true" muted playsinline controls="controls" type='application/x-mpegURL'></video>
+    <video class="marginLeft10 height250" id="video6" autoplay="true" muted playsinline controls="controls" type='application/x-mpegURL'></video>
+  </div>
+  <script>
+    const initVideo = (channelNumber) => {
+      var video = document.getElementById(`video${channelNumber}`);
+      var hls = new Hls();
+      // bind them together
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+        console.log(
+          `video and hls.js are now bound together for ${channelNumber} !`
+        );
+        hls.loadSource(`http://192.168.68.113:3000/stream/${channelNumber}`);
+        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {});
+      });
+    };
+    if (Hls.isSupported()) {
+      initVideo(1);
+      initVideo(2);
+      initVideo(3);
+      initVideo(4);
+      initVideo(5);
+      initVideo(6);
+    }
+  </script>
+
+</body>
+</html>

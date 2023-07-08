@@ -1,13 +1,4 @@
 #!/bin/bash
-pwd
-cd output
-
-mkdir channel2
-
-cd ..
-
-pwd
-ls
 
 ffmpeg -fflags nobuffer \
  -rtsp_transport tcp \

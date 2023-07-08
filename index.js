@@ -19,12 +19,11 @@ app.set("view engine", "html");
 app.engine("html", require("ejs").renderFile);
 
 app.get("/", (req, res) => {
-  res.render("index.html");
+  res.render("indexHP.html");
 });
 
 app.get("/stream/output/channel/:channel/:filename", (req, res) => {
   const { channel, filename } = req.params;
-  console.log(channel, filename)
   res.sendFile(`/output/channel${channel}/${filename}`, { root: __dirname });
 });
 
@@ -38,17 +37,17 @@ app.listen(port, () => {
 });
 
 
-const cleanUp = () => {
-  exec("./cleanup.sh", (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-  });
-}
-setInterval(cleanUp, 5000);
+// const cleanUp = () => {
+//   exec("./cleanup.sh", (error, stdout, stderr) => {
+//     if (error) {
+//       console.log(`error: ${error.message}`);
+//       return;
+//     }
+//     if (stderr) {
+//       console.log(`stderr: ${stderr}`);
+//       return;
+//     }
+//     console.log(`stdout: ${stdout}`);
+//   });
+// }
+// setInterval(cleanUp, 5000);
