@@ -1,11 +1,72 @@
+body {
+    background-color: black;
+}
+
+.mainContainer {
+    display: flex;
+}
+
 .container {
     display: flex;
-    flex-direction: column;
-    background-color: aqua;
+    height: 250px;
+}
+
+.focused {
+    display: flex;
+    height: 550px;
 }
 
 
-video {
-    width: 250px;
-    height: 250px;
+
+/* GENERIC STYLES */
+
+/* DIV STYLES */
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* INSIDE DIV SPACING STYLES */
+.justifyContentCenter {
+    justify-content: center;
+}
+
+/* SIZE STYLES */
+.width700 {
+    width: 700px;
+}
+
+.height270 {
+    height: 270px;
+}
+
+.height340 {
+    height: 340px;
+}
+
+/* MARGIN STYLES  */
+.mxAuto {
+    margin: 0 auto;
+}
+
+.marginTop20 {
+    margin-top: 20px;
+}
+
+.marginBottom10 {
+    margin-bottom: 10px;
+}
+
+.marginLeft10 {
+    margin-left: 10px;
+}
+
+.marginLeft150 {
+    margin-left: 150px;
+}
+
+
+/* VISIBILITY STYLES */
+.hidden {
+    visibility: hidden;
 }
