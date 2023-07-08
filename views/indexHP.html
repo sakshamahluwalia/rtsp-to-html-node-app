@@ -30,7 +30,7 @@
         console.log(
           `video and hls.js are now bound together for ${channelNumber} !`
         );
-        hls.loadSource(`http://192.168.68.113:3000/stream/${channelNumber}`);
+        hls.loadSource(`http://<ipaddr:port>/stream/${channelNumber}`);
         hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {});
       });
     };
